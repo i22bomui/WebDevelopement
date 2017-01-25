@@ -1,0 +1,82 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+	{% block title %} Home Page {% endblock %}
+
+
+	{% block body_block %}
+
+		<div class="page-header">
+			{% if user.is_authenticated %}
+				<h1> Rango says... hello {{ user.username }}!</h1> <br />
+			{% else %}
+				<h1> Rango says... hello world!</h1> <br />
+			{% endif %}			
+		</div>
+
+
+		<div class="row placeholders">
+        	<div class="col-xs-12 col-sm-6 placeholder">
+
+				{% if categories_by_likes %}
+
+
+               		<div class="panel panel-primary">
+    					<div class="panel-heading">
+            				<h3 class="panel-title">Categories</h3>
+    					</div>
+					</div>
+
+					<ul class="list-group">
+
+						<!-- El bucle for es similar al de bash (la variable category se define en el bucle) -->
+						{% for category in categories_by_likes %}
+							<li class="list-group-item"><a href="{% url 'category' category.slug %}"> {{ category.name }} </a> - Views: {{ category.views }} - Likes {{ category.likes }}</li>
+						{% endfor %}
+
+					</ul>
+
+
+				{% else %}
+					<strong> There are no categories present </strong>
+
+				{% endif %}
+
+			</div>
+		</div>
+			
+
+		<!-- ---------------------------------------------------------------------------------- -->
+
+		<div class="row placeholders">
+        	<div class="col-xs-12 col-sm-6 placeholder">
+
+				{% if pages_by_views %}
+
+
+               		<div class="panel panel-primary">
+    					<div class="panel-heading">
+            				<h3 class="panel-title">Categories</h3>
+    					</div>
+					</div>
+
+
+					<ul class="list-group">
+
+						{% for page in pages_by_views %}
+							<li class="list-group-item"><a href="{% url 'page' page.category.slug page.slug %}"> {{ page.title }} </a> - Views: {{ page.views }}</li>
+						{% endfor %}
+
+					</ul>
+
+				{% else %}
+					<strong> There are no categories present </strong>
+
+				{% endif %}
+
+			</div>
+		</div>
+
+
+	{% endblock %}
+
