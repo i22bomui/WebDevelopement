@@ -1,0 +1,29 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+	{% block title %} Detail Page {% endblock %}
+
+	{% block body_block %}
+
+		{% if page_detail %}
+
+			<h1> {{ page_detail.title }} Page </h1>
+
+			<p>
+
+				It's into <strong> {{ category }} </strong> category <br />
+				URL: <a href="{{ page_detail.url }}"> {{ page_detail.title }} </a>
+
+			 </p>
+
+			<p>
+				<a href="{% url 'edit_page' category.slug page_detail.slug %}"> Edit this page </a>
+				<a href="{% url 'delete_page' category.slug page_detail.slug %}"> Delete this page </a>
+			</p>
+
+		{% else %}
+			<strong> The specified page {{ page_detail.title }} does not exist! </strong>
+
+		{% endif %}
+
+	{% endblock %}

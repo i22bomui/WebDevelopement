@@ -1,0 +1,36 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+	{% block title %} {{ category.name }} {% endblock %}
+
+	{% block body_block %}
+
+		{% if category %}
+
+			<h1> {{ category.name }}</h1>
+
+				{% if page_list %}
+				<ul>
+
+					{% for page in page_list %}
+						<li> <a href="{% url 'page' category.slug page.slug %}"> {{ page.title }} </a> - Views: {{ page.views }}</li>
+					{% endfor %}
+				</ul>
+
+				{% else %}
+					<strong> No pages currently in category {{ category_name }} </strong>
+
+				{% endif %}
+
+			{% if user.is_authenticated %}
+				<!-- Link al formulario para anadir una nueva pagina -->
+				<a href="{% url 'add_page' category.slug %}"> Add a new Page </a><br/>
+			{% endif %}
+
+		{% else %}
+			<strong> The specified category {{ category.name }} does not exist! </strong>
+
+		{% endif %}
+
+	{% endblock %}
+

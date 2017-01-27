@@ -1,0 +1,17 @@
+{% extends 'rango/base.html' %}
+
+
+	{% block title %} Delete Page {% endblock %}
+
+	{% block body_block %}
+
+		<h1>Delete actual Page</h1>
+
+		<form action="" method="post">
+
+			{% csrf_token %}
+
+			<p> Are you sure you want to delete {{ object.title }} page? </p>
+			<input type="submit" value="Confirmar" />
+
+	{% endblock %}
