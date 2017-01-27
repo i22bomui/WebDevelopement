@@ -1,0 +1,19 @@
+{% extends 'entregas/base.html' %}
+
+	{% block title %} <title> Informacion Paquete </title> {% endblock %}
+
+	{% block content %}
+
+		<h2> Paquete {{ paquete.pk }} - Informacion: </h2>
+
+		<p>
+		<strong>Contenido</strong>: {{ paquete.contenido }} <br />
+		<strong>Valor</strong>: {{ paquete.valor }} <br />
+		<strong>Destinatario</strong>: {{ destinatario.direccion }} <br />
+		</p>
+
+
+		<a href="{% url 'change_paquete' paquete.pk %}"> Modificar Paquete </a><br />
+		<a href="{% url 'delete_paquete' paquete.pk %}"> Borrar Paquete </a>
+
+	{% endblock %}

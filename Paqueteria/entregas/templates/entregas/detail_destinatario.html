@@ -1,0 +1,15 @@
+{% extends 'entregas/base.html' %}
+
+	{% block title %} <title> Informacion Destinatario </title> {% endblock %}
+
+	{% block content %}
+
+		<h2> Destinatario {{ destinatario.pk }} - Informacion: </h2>
+
+		<p>
+		<strong> Ciudad </strong>: {{ destinatario.ciudad }} <br />
+		<strong> Dirección </strong>: {{ destinatario.direccion }} <br />
+		<strong> Distancia </strong>: {{ destinatario.distancia }} <br />
+		</p>
+
+	{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'entregas/base.html' %}
+
+
+	{% block title %}<title> Destinatarios - Lista </title>{% endblock %}
+
+
+	{% block content %}
+
+		{% if list_destinatario %}
+
+			<ul>
+				{% for destinatario in list_destinatario %}
+
+					<li> <a href = "{% url 'detail_destinatario' destinatario.pk %}"> Destinatario {{destinatario.pk}} - {{destinatario.direccion}} </a> </li>
+
+				{% endfor %}
+			</ul>
+
+		{% else %}
+			<p> La lista de Destinatarios esta vacia </p>
+		{% endif %}
+
+		<a href="{% url 'add_destinatario' %}"> Añade un nuevo Destinatario </a>
+
+	{% endblock %}

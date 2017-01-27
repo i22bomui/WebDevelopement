@@ -1,0 +1,17 @@
+{% extends 'entregas/base.html' %}
+
+	{% block title %} <title> Cambio Informacion Ruta </title> {% endblock %}
+
+
+	{% block content %}
+
+		<form id="form" method="post" action="{% url 'change_ruta' ruta_id %}">
+
+			{% csrf_token %}
+
+			{{ form.as_p }}
+
+			<input type="submit" name="submit" value="Modificar Ruta" />
+
+		</form>
+	{% endblock %}

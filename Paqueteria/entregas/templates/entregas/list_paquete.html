@@ -1,0 +1,25 @@
+{% extends 'entregas/base.html' %}
+
+
+	{% block title %}<title> Paquetes - Lista </title>{% endblock %}
+
+
+	{% block content %}
+
+		{% if list_paquete %}
+
+			<ul>
+				{% for paquete in list_paquete %}
+
+					<li> <a href = "{% url 'detail_paquete' paquete.pk %}"> Paquete {{paquete.pk}} - {{paquete.contenido}} </a> </li>
+
+				{% endfor %}
+			</ul>
+
+		{% else %}
+			<p> La lista de Paquetes esta vacia </p>
+		{% endif %}
+
+		<a href="{% url 'add_paquete' %}"> Añade un nuevo Paquete </a>
+
+	{% endblock %}

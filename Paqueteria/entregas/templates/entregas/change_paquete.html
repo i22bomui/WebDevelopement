@@ -1,0 +1,17 @@
+{% extends 'entregas/base.html' %}
+
+	{% block title %} <title> Cambio Informacion Paquete </title> {% endblock %}
+
+
+	{% block content %}
+
+		<form id="form" method="post" action="{% url 'change_paquete' paquete_id %}">
+
+			{% csrf_token %}
+
+			{{ form.as_p }}
+
+			<input type="submit" name="submit" value="Modificar Paquete" />
+
+		</form>
+	{% endblock %}

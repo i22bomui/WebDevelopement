@@ -1,0 +1,16 @@
+{% extends 'entregas/base.html' %}
+
+	{% block title %} <title> Borrado Objeto </title> {% endblock %}
+
+	{% block content %}
+
+		<h1>Borrado Objeto Actual</h1>
+
+		<form action="" method="post">
+
+			{% csrf_token %}
+
+			<p> ¿Estas seguro de que deseas borrar el objeto {{ object.pk }}? </p>
+			<input type="submit" value="Confirmar" />
+
+	{% endblock %}

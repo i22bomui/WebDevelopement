@@ -1,0 +1,25 @@
+{% extends 'entregas/base.html' %}
+
+
+	{% block title %}<title> Rutas - Lista </title>{% endblock %}
+
+
+	{% block content %}
+
+		{% if list_ruta %}
+
+			<ul>
+				{% for ruta in list_ruta %}
+
+					<li> <a href = "{% url 'detail_ruta' ruta.pk %}"> Ruta {{ruta.pk}} - {{ruta.nombre}} </a> </li>
+
+				{% endfor %}
+			</ul>
+
+		{% else %}
+			<p> La lista de Rutas esta vacia </p>
+		{% endif %}
+
+		<a href="{% url 'add_ruta' %}"> Añade un nuevo Ruta </a>
+
+	{% endblock %}

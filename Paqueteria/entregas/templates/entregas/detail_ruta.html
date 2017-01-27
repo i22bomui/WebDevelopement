@@ -1,0 +1,27 @@
+{% extends 'entregas/base.html' %}
+
+	{% block title %} <title> Informacion Ruta </title> {% endblock %}
+
+	{% block content %}
+
+		<h2> Ruta {{ ruta.pk }} - Informacion: </h2>
+
+		<p>
+		<strong>Nombre</strong>: {{ ruta.nombre }} <br />
+
+		<strong>Paquetes en la Ruta</strong>: <br />
+
+		<ul>		
+			{% for paquete in list_paquete %}
+		
+				<li> <a href="{% url 'detail_paquete' paquete.pk %}"> Paquete {{paquete.pk}} - {{paquete.contenido}} </a></li>
+
+			{% endfor %}
+		</ul>
+		</p>
+
+
+		<a href="{% url 'change_ruta' ruta.pk %}"> Modificar Ruta </a><br />
+		<a href="{% url 'delete_ruta' ruta.pk %}"> Borrar Ruta </a>
+
+	{% endblock %}
